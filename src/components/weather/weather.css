@@ -1,0 +1,33 @@
+.weather {
+    padding: 0 20px;
+}
+
+.weather__items {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.weather__icon {
+    width: 150px;
+    height: 150px;
+}
+
+.weather__item {
+    font-size: 30px;
+}
+
+.weather__item span {
+    font-size: 60px;
+}
+
+.weather__list {
+    padding: 0 20px;
+    border-top: 2px solid gray;
+    list-style-type: none;
+}
+
+.weather__list li {
+    font-size: 25px;
+    line-height: 32px;
+}

@@ -1,7 +1,15 @@
+import './form.css';
+
 const Form = (props) => {
+
     return (
-        <form onSubmit={props.onSubmit} className="App">
-            <input name='city' type="text" placeholder='Погода в вашем городе' />
+        <form className='form' onSubmit={props.onSubmit}>
+            <input
+                name='city'
+                type='text'
+                placeholder='Погода в вашем городе'
+                onChange={props.onChangeCity}
+                value={props.cityName} />
             <button>Получить погоду</button>
         </form>
     )

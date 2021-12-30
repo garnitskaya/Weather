@@ -1,6 +1,5 @@
 export default class WeatherService {
     _apiBase = 'http://api.openweathermap.org/data/2.5/weather';
-    ////_sityID =
     _apiKey = 'appid=60f6d2438edc03c76131adc3db79b9cb';
 
     getResource = async (url) => {
@@ -14,8 +13,9 @@ export default class WeatherService {
         return data
     }
 
-    gettingWeather = async (city = 'Kiev') => {
+    gettingWeather = async (city) => {
         const res = await this.getResource(`${this._apiBase}?q=${city}&units=metric&lang=ru&${this._apiKey}`)
+        console.log('city', city)
         return this.transformSity(res);
     }
 
