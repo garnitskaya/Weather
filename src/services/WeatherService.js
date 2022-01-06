@@ -14,8 +14,7 @@ export default class WeatherService {
     }
 
     gettingWeather = async (city) => {
-        const res = await this.getResource(`${this._apiBase}?q=${city}&units=metric&lang=ru&${this._apiKey}`)
-        console.log('city', city)
+        const res = await this.getResource(`${this._apiBase}?q=${city}&units=metric&lang=ru&${this._apiKey}`);
         return this.transformSity(res);
     }
 
@@ -29,6 +28,7 @@ export default class WeatherService {
             temp: Math.round(city.main.temp) + '\xB0C',
             wind: Math.round(city.wind.speed) + 'м/с',
             sunrise: city.sys.sunrise,
+            sunset: city.sys.sunset,
             pressure: Math.round(city.main.pressure * 0.750063755419211) + 'мм рт.ст.',
             humidity: city.main.humidity + '%'
         }

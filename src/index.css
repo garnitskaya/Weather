@@ -5,13 +5,13 @@ body {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 18%, rgba(4, 115, 191, 1) 67%, rgba(0, 212, 255, 1) 100%);
+    background: url('./resourses/img/goluboe-nebo-oblaka-luchi.jpg')center center/cover no-repeat;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #383838;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 code {
