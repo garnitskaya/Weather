@@ -27,8 +27,8 @@ export default class WeatherService {
             feelsLike: Math.round(city.main.feels_like) + '\xB0C',
             temp: Math.round(city.main.temp) + '\xB0C',
             wind: Math.round(city.wind.speed) + 'м/с',
-            sunrise: city.sys.sunrise,
-            sunset: city.sys.sunset,
+            sunrise: city.sys.sunrise + city.timezone,
+            sunset: city.sys.sunset + city.timezone,
             pressure: Math.round(city.main.pressure * 0.750063755419211) + 'мм рт.ст.',
             humidity: city.main.humidity + '%'
         }

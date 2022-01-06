@@ -3,8 +3,12 @@ import './weather.css';
 const Weather = ({ city }) => {
     const { icon, name, country, description, feelsLike, temp, wind, sunrise, sunset, pressure, humidity } = city;
 
-    const sunRise = new Date(sunrise * 1000).toLocaleTimeString();
-    const sunSet = new Date(sunset * 1000).toLocaleTimeString();
+    const convertTime = (timestamp) => {
+        const date = new Date(timestamp * 1000);
+        const h = date.getUTCHours();
+        const m = date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes();
+        return `${h}:${m}`;
+    }
 
     return (
         <div className='weather'>
@@ -22,8 +26,8 @@ const Weather = ({ city }) => {
                         <li>Осадки: {description}</li>
                         <li>Давление: {pressure}</li>
                         <li>Влажность: {humidity}</li>
-                        <li>Восход: {sunRise} </li>
-                        <li>Закат: {sunSet} </li>
+                        <li>Восход: {convertTime(sunrise)} </li>
+                        <li>Закат: {convertTime(sunset)} </li>
                     </ul>
                 </>
             }
