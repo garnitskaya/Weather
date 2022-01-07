@@ -30,7 +30,8 @@ export default class WeatherService {
             sunrise: city.sys.sunrise + city.timezone,
             sunset: city.sys.sunset + city.timezone,
             pressure: Math.round(city.main.pressure * 0.750063755419211) + 'мм рт.ст.',
-            humidity: city.main.humidity + '%'
+            humidity: city.main.humidity + '%',
+            timezone: city.timezone
         }
     }
 }

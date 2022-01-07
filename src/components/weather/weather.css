@@ -24,11 +24,56 @@
 
 .weather__list {
     padding: 0 20px;
-    border-top: 2px solid gray;
+    border-top: 2px solid rgba(128, 128, 128, .6);
     list-style-type: none;
 }
 
 .weather__list li {
     font-size: 25px;
     line-height: 38px;
+}
+
+.weather__list-line {
+    padding-top: 20px;
+    position: relative;
+    width: 270px;
+    height: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+
+}
+
+.weather__list-line span {
+    position: absolute;
+    height: 270px;
+    width: 270px;
+    border: 2px solid #000;
+    border-top: 2px dotted #000;
+    border-right: 2px dotted #000;
+    border-radius: 50%;
+}
+
+.weather__list-line span:after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border: 2px solid yellow;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 10px yellow;
+    top: 34px;
+    left: 20px;
+}
+
+.weather__list-sun {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weater__time {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 25px;
 }
