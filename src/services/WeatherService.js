@@ -1,5 +1,5 @@
 export default class WeatherService {
-    _apiBase = 'http://api.openweathermap.org/data/2.5/weather';
+    _apiBase = 'https://api.openweathermap.org/data/2.5/weather';
     _apiKey = 'appid=60f6d2438edc03c76131adc3db79b9cb';
 
     getResource = async (url) => {
@@ -20,7 +20,7 @@ export default class WeatherService {
 
     transformSity = (city) => {
         return {
-            icon: ` http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`,
+            icon: ` https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`,
             name: city.name,
             country: city.sys.country,
             description: city.weather[0].description,

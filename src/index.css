@@ -14,19 +14,6 @@ body {
     color: rgb(26, 26, 26);
 }
 
-body:after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    right: 10%;
-    background: rgba(255, 255, 255, .4);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
-    z-index: -1;
-}
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;

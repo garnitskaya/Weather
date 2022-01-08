@@ -32,13 +32,13 @@ const Weather = ({ city }) => {
     let style;
     if (dateNow <= sunrise) {
         style = { 'transform': `rotate(0deg)` };
-        document.querySelector('body').style.background = `url(${night}) center center/cover no-repeat`;
+        document.body.style.background = `url(${night}) center center/cover no-repeat`;
     } else if (dateNow > sunset) {
         style = { 'transform': `rotate(100deg)` };
-        document.querySelector('body').style.background = `url(${night}) center center/cover no-repeat`;
+        document.body.style.background = `url(${night}) center center/cover no-repeat`;
     } else if (sunrise < dateNow || dateNow < sunset) {
         style = { 'transform': `rotate(${sunsetDistance}deg)` };
-        document.querySelector('body').style.background = `url(${blueSky}) center center/cover no-repeat `;
+        document.body.style.background = `url(${blueSky}) center center/cover no-repeat `;
     }
 
     return (
