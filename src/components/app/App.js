@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import WeatherService from './../../services/WeatherService';
 import Form from '../form/Form';
 import Weather from '../weather/Weather';
@@ -7,12 +7,16 @@ import Spinner from '../spinner/Spinner';
 import './app.css';
 
 function App() {
-    const [city, setCity] = useState([]);
+    const [city, setCity] = useState(JSON.parse(localStorage.getItem('city')) || []);
     const [cityName, setCityName] = useState('');
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const weatherService = new WeatherService();
+
+    useEffect(() => {
+        localStorage.setItem('city', JSON.stringify(city));
+    }, [city]);
 
     const onSubmit = (e) => {
         e.preventDefault();

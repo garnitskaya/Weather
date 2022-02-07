@@ -30,12 +30,15 @@ const Weather = ({ city }) => {
     }
 
     let style;
+    let borderTop;
     if (dateNow <= sunrise) {
         style = { 'transform': `rotate(0deg)` };
-        document.body.style.background = `url(${night}) center center/cover no-repeat`;
+        borderTop = { 'borderTop': '2px solid rgba(255, 255, 0, .5)' };
+        document.body.style.background = `url(${night}) 70% center/cover no-repeat `;
     } else if (dateNow > sunset) {
         style = { 'transform': `rotate(100deg)` };
-        document.body.style.background = `url(${night}) center center/cover no-repeat`;
+        borderTop = { 'borderTop': '2px solid rgba(255, 255, 0, .5)' };
+        document.body.style.background = `url(${night}) 70% center/cover no-repeat `;
     } else if (sunrise < dateNow || dateNow < sunset) {
         style = { 'transform': `rotate(${sunsetDistance}deg)` };
         document.body.style.background = `url(${blueSky}) center center/cover no-repeat `;
@@ -50,7 +53,7 @@ const Weather = ({ city }) => {
                         <img className='weather__icon' src={icon} alt={icon} />
                         <div className='weather__item'><span> {temp}</span> {name}</div>
                     </div>
-                    <ul className='weather__list'>
+                    <ul className='weather__list' style={borderTop}>
                         <li>Местоположение: {name}, {country}</li>
                         <li>Температура: {temp} </li>
                         <li>По ощущению: {feelsLike} </li>

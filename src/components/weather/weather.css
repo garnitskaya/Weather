@@ -1,5 +1,16 @@
 .weather {
     padding: 0 20px;
+    animation: faded .4s;
+}
+
+@keyframes faded {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .weather__items {
@@ -76,4 +87,32 @@
     margin-top: 5px;
     text-align: center;
     font-size: 25px;
+}
+
+@media (max-width:576px) {
+    .weater__time {
+        font-size: 20px;
+    }
+
+    .weather__icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .weather__items {
+        flex-wrap: wrap;
+    }
+
+    .weather__item {
+        font-size: 25px;
+    }
+
+    .weather__item span {
+        font-size: 50px;
+    }
+
+    .weather__list li {
+        font-size: 20px;
+        line-height: 30px;
+    }
 }
