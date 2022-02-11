@@ -1,0 +1,120 @@
+.weather {
+    padding: 0 20px;
+    animation: faded .4s;
+
+    @keyframes faded {
+        from {
+            opacity: 0.1;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    &__icon {
+        width: 150px;
+        height: 150px;
+    }
+
+    &__item {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    &__item span {
+        font-size: 60px;
+    }
+
+    &__list {
+        padding: 0 20px;
+        border-top: 2px solid rgba(128, 128, 128, .6);
+        list-style-type: none;
+
+        li {
+            font-size: 25px;
+            line-height: 38px;
+        }
+
+        &-line {
+            padding-top: 20px;
+            position: relative;
+            width: 270px;
+            height: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+
+            span {
+                position: absolute;
+                height: 270px;
+                width: 270px;
+                border: 2px solid #000;
+                border-top: 2px dotted #000;
+                border-right: 2px dotted #000;
+                border-radius: 50%;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    height: 20px;
+                    width: 20px;
+                    border: 2px solid yellow;
+                    background: yellow;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px yellow;
+                    top: 34px;
+                    left: 20px;
+                }
+            }
+        }
+
+        &-sun {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__time {
+        margin-top: 5px;
+        text-align: center;
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width:576px) {
+    .weather {
+        &__time {
+            font-size: 20px;
+        }
+
+        &__icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        &__items {
+            flex-wrap: wrap;
+        }
+
+        &__item {
+            font-size: 25px;
+        }
+
+        &__item span {
+            font-size: 50px;
+        }
+
+        &__list li {
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+}

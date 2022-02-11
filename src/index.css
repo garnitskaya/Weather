@@ -1,22 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 body {
-    margin: auto;
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: url('./resourses/img/blue_sky.jpg')center center/cover no-repeat;
-    height: 100vh;
+    background: url('./resourses/img/blue_sky.jpg') 0 0/cover no-repeat fixed;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgb(26, 26, 26);
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
 }
 
 * {

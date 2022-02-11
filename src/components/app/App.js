@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import WeatherService from './../../services/WeatherService';
+
+import { weatherService } from './../../services/WeatherService';
 import Form from '../form/Form';
 import Weather from '../weather/Weather';
 import Spinner from '../spinner/Spinner';
 
-import './app.css';
+import './app.scss';
 
 function App() {
     const [city, setCity] = useState(JSON.parse(localStorage.getItem('city')) || []);
@@ -12,7 +13,7 @@ function App() {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const weatherService = new WeatherService();
+    const { gettingWeather } = weatherService();
 
     useEffect(() => {
         localStorage.setItem('city', JSON.stringify(city));
@@ -23,7 +24,7 @@ function App() {
         setLoading(true);
 
         if (cityName) {
-            weatherService.gettingWeather(cityName)
+            gettingWeather(cityName)
                 .then(onCityLoaded)
                 .catch(onError)
         } else {
@@ -56,12 +57,10 @@ function App() {
     return (
         <div className="app">
             <h1>погода</h1>
-
             <Form onSubmit={onSubmit} cityName={cityName} onChangeCity={onChangeCity} />
             {errorMessage}
             {spinner}
             {content}
-
         </div>
     );
 }
