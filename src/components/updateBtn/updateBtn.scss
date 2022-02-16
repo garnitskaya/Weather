@@ -1,0 +1,27 @@
+.update-btn {
+    position: absolute;
+    width: 20px;
+    top: 170px;
+    right: 20px;
+    background: none;
+    cursor: pointer;
+
+    &.active {
+        animation: update .2s ease-in-out 1;
+    }
+
+    svg {
+        width: 20px;
+    }
+
+    @keyframes update {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+}

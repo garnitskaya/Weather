@@ -1,66 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { weatherService } from './../../services/WeatherService';
 import Form from '../form/Form';
 import Weather from '../weather/Weather';
-import Spinner from '../spinner/Spinner';
+import UpdateBtn from './../updateBtn/UpdateBtn';
+import Spinner from './../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
 import './app.scss';
 
-function App() {
-    const [city, setCity] = useState(JSON.parse(localStorage.getItem('city')) || []);
-    const [cityName, setCityName] = useState('');
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+const App = () => {
+    const { city, cityStatus } = useSelector(state => state.city);
 
-    const { gettingWeather } = weatherService();
-
-    useEffect(() => {
-        localStorage.setItem('city', JSON.stringify(city));
-    }, [city]);
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        setLoading(true);
-
-        if (cityName) {
-            gettingWeather(cityName)
-                .then(onCityLoaded)
-                .catch(onError)
-        } else {
-            onError();
-        }
-    }
-
-    const onCityLoaded = (city) => {
-        setCity(city);
-        setCityName('');
-        setError(false);
-        setLoading(false);
-    }
-
-    const onError = () => {
-        setError(true)
-        setCity([]);
-        setLoading(false);
-        setCityName('');
-    }
-
-    const onChangeCity = (e) => {
-        setCityName(e.target.value);
-    }
-
-    const spinner = loading ? <Spinner /> : null;
-    const errorMessage = error ? <h2>Введите название города</h2> : null
-    const content = !(spinner || errorMessage) ? <Weather city={city} /> : null;
+    const spinner = cityStatus === 'loading' ? <Spinner /> : null;
+    const errorMessage = cityStatus === 'error' ? <ErrorMessage /> : null
+    const content = !(spinner || errorMessage) ? <Weather /> : null;
 
     return (
         <div className="app">
             <h1>погода</h1>
-            <Form onSubmit={onSubmit} cityName={cityName} onChangeCity={onChangeCity} />
+            <Form />
             {errorMessage}
             {spinner}
             {content}
+            {city.name && <UpdateBtn />}
         </div>
     );
 }

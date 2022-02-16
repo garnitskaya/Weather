@@ -1,26 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { convertTime } from '../../helpers/convertTime';
+import { convertTime } from '../../utils/convertTime';
+import Spinner from './../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import night from '../../resourses/img/night.jpg';
 import blueSky from '../../resourses/img/blue_sky.jpg';
 
 import './weatherMain.scss';
 
-const WeatherMain = ({ city }) => {
+const WeatherMain = () => {
+    const { city, timeNow, cityStatus } = useSelector(state => state.city);
+    const dispatch = useDispatch();
 
     const { icon, name, country, description, feelsLike, temp, wind, sunrise, sunset, pressure, humidity, timezone } = city;
-    const dateNow = Date.now() / 1000;
+    const dateNow = timeNow / 1000;
     const daylightHours = 100 / (sunset - sunrise);
     const sunsetDistance = (dateNow - sunrise) * daylightHours;
 
-    const [time, setTime] = useState(dateNow);
-
     useEffect(() => {
-        const timer = setInterval(() => setTime(time => time + 1), 1000);
+        const timer = setInterval(() => dispatch((dateNow => dateNow + 1)), 1000);
 
         return () => {
             clearInterval(timer);
         }
+        // eslint-disable-next-line
     }, []);
 
     let style;
@@ -38,9 +42,15 @@ const WeatherMain = ({ city }) => {
         document.body.style.background = `url(${blueSky}) 0 0/cover no-repeat fixed`;
     }
 
+    if (cityStatus === 'loading') {
+        return <Spinner />;
+    } else if (cityStatus === 'error') {
+        return <ErrorMessage />;
+    }
+
     return (
         <div className='weather'>
-            <div className='weather__time'>{convertTime(time, timezone)}</div>
+            <div className='weather__time'>{convertTime(dateNow, timezone)}</div>
             <div className='weather__items'>
                 <img className='weather__icon' src={icon} alt={icon} />
                 <div className='weather__item'><span> {temp}</span> {name}</div>

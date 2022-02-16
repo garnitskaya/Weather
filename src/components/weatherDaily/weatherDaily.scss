@@ -24,7 +24,7 @@
 
     &__title.active {
         &::before {
-            top: 0;
+            top: 20%;
             border: 7px solid transparent;
             border-bottom: 7px solid rgb(26, 26, 26);
         }
@@ -37,7 +37,7 @@
     }
 
     &__wrap.active {
-        max-height: 45em;
+        max-height: 60em;
         opacity: 1;
     }
 
